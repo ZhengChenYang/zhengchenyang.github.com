@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "朴素贝叶斯"
+date:   2018-04-03 18:20:09 +0800
+categories: jekyll update
+---
+
+### 基于概率论的分类方法：朴素贝叶斯 ###
+
+
