@@ -1,0 +1,31 @@
+---
+layout: post
+title:  "自动化构建工具gulp学习"
+date:   2018-04-12 14:00:00 +0800
+categories: 前端
+tag: 自动化构建工具
+---
+
+# Gulp
+
+## 快速开始 ##
+1. 全局安装gulp  
+```
+	$ npm install --global gulp-cli
+```
+2. 项目的开发依赖中安装gulp  
+```
+	$ npm install --save-dev gulp
+```
+3. 在项目根目录中创建**gulpfile.js**  
+``` node.js
+	var gulp = require('gulp');
+	gulp.task('defualt', function(){
+		//place code for your default task here 
+	});
+```  
+4. 运行gulp  
+```
+	$ gulp
+```  
+运行单个任务，使用`gulp<task><othertask>`.
