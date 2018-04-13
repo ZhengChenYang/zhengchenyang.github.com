@@ -4,6 +4,7 @@ title:  "Welcome to Jekyll!"
 date:   2018-04-03 16:20:09 +0800
 categories: 生活随笔
 tags: 随笔
+published: false
 imag_url: ggg
 ---
 
