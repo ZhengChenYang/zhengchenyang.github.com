@@ -2,7 +2,8 @@
 layout: post
 title:  "轻量级框架Milky设计"
 date:   2018-04-03 18:20:09 +0800
-categories: Java
+categories: 小项目
+tags: Java 轻量级框架
 ---
 
 ## **注入方式** ##

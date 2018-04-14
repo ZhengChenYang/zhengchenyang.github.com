@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "Welcome to Jekyll!"
+date:   2018-4-14 10:20:00 +0800
+categories: 生活随笔
+---
+# 生活随笔的占位 # 

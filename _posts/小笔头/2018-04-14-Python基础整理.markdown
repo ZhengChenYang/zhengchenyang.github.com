@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "Python基础整理"
+date:   2018-4-14 16:20:09 +0800
+categories: 小笔头
+published: true
+tag: Python
+---
+
+

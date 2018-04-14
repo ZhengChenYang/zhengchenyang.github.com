@@ -2,8 +2,8 @@
 layout: post
 title:  "自动化构建工具gulp学习"
 date:   2018-04-12 14:00:00 +0800
-categories: 前端
-tag: 自动化构建工具
+categories: 小笔头
+tag: 前端
 ---
 
 # 自动化构建工具Gulp

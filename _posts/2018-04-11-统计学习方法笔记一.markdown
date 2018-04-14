@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "统计学习方法笔记一"
+title:  "《统计学习方法》笔记一"
 date:   2018-04-11 9:20:00 +0800
-categories: 机器学习
+categories: 读书
+tag: 机器学习
 ---
 
 # 统计学习基本概念 #

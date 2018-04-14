@@ -2,7 +2,8 @@
 layout: post
 title:  "MySQL查询步骤及优化"
 date:   2018-04-09 11:11:09 +0800
-categories: MySQL
+categories: 小笔头
+tag: MySQL
 ---
 
 ## 过程概览 ##

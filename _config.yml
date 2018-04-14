@@ -113,10 +113,11 @@ toc:
 links:
   码农圈: https://coderq.com
   Jark's Blog: http://wuchong.me
-
+  臭逼's Blog: http://jingl.wang/
+  
 #### Comment
 duoshuo_shortname:    ## e.g. wuchong      your duoshuo short name.       website: http://duoshuo.com
-disqus_shortname:     ## e.g. wuchong      your disqus short name.        website: http://disqus.com
+disqus_shortname:     ## e.g. wuchong      your disqus short name.        website: http://disqus.com 
 hypercomments_id:     ## e.g. 91510        your hypercomments widget id.  website: http://hypercomments.com
 yungentie_productkey: ## your netease yungentie product key.              website: https://gentie.163.com
 ## set only one of them
@@ -136,8 +137,8 @@ google_analytics:
 ## You MUST upgrade to Universal Analytics first!
 ## https://developers.google.com/analytics/devguides/collection/upgrade/?hl=zh_CN
 baidu_tongji:
-  enable: false
-  sitecode:  ## e.g. e6d1f421bbc9962127a50488f9ed37d1 your baidu tongji site code
+  enable: true
+  sitecode: 85e6be69092a0941cd4f1a7697bb964a ## e.g. e6d1f421bbc9962127a50488f9ed37d1 your baidu tongji site code
 cnzz_tongji:
   enable: false
   siteid:    ## e.g. 1253575964 your cnzz tongji site id
