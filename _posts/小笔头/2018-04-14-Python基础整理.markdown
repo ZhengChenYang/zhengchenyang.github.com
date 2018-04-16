@@ -6,37 +6,41 @@ categories: 小笔头
 published: true
 tag: Python
 ---
+# 简介 #
+这是一篇整理Python基础用法的文章。
 
 
 # Python内置方法 #
+
 | 内置类方法                   | 说明      |  
-| :--------                  | :-----    |   
-| __init__(self,...)  | 初始化对象，在创建新对象时调用|  
-| __del__(self)       | 释放对象，在对象被删除之前调用|  
-| __new__(cls,*args,**kwd)  | 实例的生成操作 | 
-| __str__(self)  | 在使用print语句时被调用 | 
-| __getitem__(self,key)  | 获取序列的索引key对应的值，等价于seq[key] |  
-| __len__(self)  | 在调用内联函数len()时被调用 | 
-| __cmp__(stc,dst)  |比较两个对象src和dst | 
-| __getattr__(s,name)  | 获取属性的值 | 
-| __setattr__(s,name,value)  | 设置属性的值 | 
-|__delattr__(s,name)   | 删除name属性  |
-| __getattribute__()  | __getattribute__()功能与__getattr__()类似  |
-| __gt__(self,other)  | 判断self对象是否大于other对象  |
-| __lt__(slef,other)  |判断self对象是否小于other对象  |
-|__ge__(slef,other)  | 判断self对象是否大于或者等于other对象  |
-| __le__(slef,other)  |判断self对象是否小于或者等于other对象  |
-| __eq__(slef,other)  |判断self对象是否等于other对象  |
-| __call__(self,*args)  | 把实例对象作为函数调用 |
+| :--------                  | :-----    |    
+| \_\_init\_\_(self,...)  | 初始化对象，在创建新对象时调用|    
+| \_\_del\_\_(self)       | 释放对象，在对象被删除之前调用|  
+| \_\_new\_\_(cls,*args,**kwd)  | 实例的生成操作 |  
+| \_\_str\_\_(self)  | 在使用print语句时被调用 |  
+| \_\_getitem\_\_(self,key)  | 获取序列的索引key对应的值，等价于seq[key] |   
+| \_\_len\_\_(self)  | 在调用内联函数len()时被调用 |   
+| \_\_cmp\_\_(stc,dst)  |比较两个对象src和dst |  
+| \_\_getattr\_\_(s,name)  | 获取属性的值 |  
+| \_\_setattr\_\_(s,name,value)  | 设置属性的值 |   
+| \_\_delattr\_\_(s,name)   | 删除name属性  |  
+| \_\_getattribute\_\_()  |  \_\_getattribute\_\_()功能与\_\_getattr\_\_()类似  |  
+| \_\_gt\_\_(self,other)  | 判断self对象是否大于other对象  |  
+| \_\_lt\_\_(slef,other)  |判断self对象是否小于other对象  |  
+| \_\_ge\_\_(slef,other)  | 判断self对象是否大于或者等于other对象  |  
+| \_\_le\_\_(slef,other)  |判断self对象是否小于或者等于other对象  |  
+| \_\_eq\_\_(slef,other)  |判断self对象是否等于other对象  |  
+| \_\_call\_\_(self,*args)  | 把实例对象作为函数调用 |  
 
 
 
 
 # Python内置类属性 #
+
 | 内置类属性 | 说明      |  
-| :--------     | :-----    |    
-|__dict__  | 类的属性（包含一个字典，由类的数据属性组成）|  
-|__doc__  |类的文档字符串  |
-|__name__ | 类名  |
-|__module__ | 类定义所在的模块（类的全名是'__main__.className'，如果类位于一个导入模块mymod中，那么className.__module__ 等于 mymod） | 
-|__bases__  | 类的所有父类构成元素（包含了以个由所有父类组成的元组）|  
+| :--------     | :-----    |      
+| \_\_dict\_\_  | 类的属性（包含一个字典，由类的数据属性组成）|    
+| \_\_doc\_\_  |类的文档字符串  |  
+| \_\_name\_\_ | 类名  |  
+| \_\_module\_\_ | 类定义所在的模块（类的全名是'\_\_main\_\_.className'，如果类位于一个导入模块mymod中，那么className.\_\_module\_\_ 等于 mymod） |   
+|\_\_bases\_\_  | 类的所有父类构成元素（包含了以个由所有父类组成的元组）|    

@@ -7,8 +7,7 @@ tags: Python
 ---
 
 # pickle — Python对象序列化 #
-
-**pickle**模块实现了python对象结构的序列化和反序列化的二进制协议。"Pickling"是一个通过python对象结构转化为二进制流的过程，"unpickling"是一个相反的操作，通过字节流转换为对象结构。Pickling(和unpickling)也被称为“serialization”, “marshalling,” [1] or “flattening”。但是，为了避免混乱，这里
+**pickle**模块实现了python对象结构的序列化和反序列化的二进制协议。"Pickling"是一个通过python对象结构转化为二进制流的过程，"unpickling"是一个相反的操作，通过字节流转换为对象结构。Pickling(和unpickling)也被称为“serialization”, “marshalling,” 或者 “flattening”。但是，为了避免混乱，这里
 统一使用“pickling"和”unpickling"作为术语。
 
 ## 与python其他模块联系 ##
@@ -60,10 +59,10 @@ pickele模块提供了下列的函数来使序列化过程更简便。
 * 定在在模块顶层的类
 * \_\_dict\_\_或者调用\_\_getstate\_\_()的结果可以序列化的类的实例
   
-尝试序列化不可序列化的对象会抛出PicklingError异常。当这个发生的，可能已经将一个未指明的字节数写入到底层的文件中。尝试序列化一个高度递归的数据结构会最大递归深度，一个 RecursionError会被抛出在这种情况下。你需要小心提高这个限制用sys.setrecursionlimit()。  
+尝试序列化不可序列化的对象会抛出PicklingError异常。当这个发生的，可能已经将一个未指明的字节数写入到底层的文件中。尝试序列化一个高度递归的数据结构到最大递归深度，这种情况下一个 RecursionError会被抛出在。你可以用sys.setrecursionlimit()小心提高这个限制。  
 注意，函数（包括内置和用户定义）是由完全限定名字引用，而不是值。这就意味着只有函数名能被序列化，以及所在模块的名字。函数的代码以及里面的属性都不会被序列化。定义的模块必须在反序列化环境中导入，模块必须包含命名对象，否则会抛出异常。  
 相似的，类通过命名引用被序列化，相同的限制会在反序列化环境中采用。注意，类的代码和数据都不会被序列化，所以在下面的例子中，class中的属性attr不会被恢复在反序列化环境中。  
-```
+```python
 class Foo:
     attr = 'A class attribute'
 
@@ -76,7 +75,7 @@ picklestring = pickle.dumps(Foo)
 # 序列化类实例 #
 在这个单元，我们描述一种普遍的机制可供你定义，定制以及控制类实例如何被序列化和反序列化。  
 在大多数的情况下，不需要附加的代码使实例可序列化。默认下，pickle会通过内省检索类以及实例的属性。当一个类实例被反序列化，它的\_\_init\_\_()方法通常不会被调用。默认的行为是先创建一个未被初始化的实例以及恢复存储的属性。下面的代码展示了这种行为的实现：  
-```  
+```python
 
 	def save(obj):
 		return (obj.__class__, obj.__dict__)
@@ -94,15 +93,15 @@ picklestring = pickle.dumps(Foo)
 2.   object.**\_\_getnewargs\_\_()**  
 这个方法和\_\_getnewargs\_ex\_\_()有相似的目的，单只支持位置参数。它必须返回一个参数args的元组，这个参数会被传递给\_\_new\_\_()方法在反序列化时候。\_\_getnewargs\_\_()不会被调用，如果\_\_getnewargs\_ex\_\_()被定义。  
 在版本3.6中发生翻遍，在python3.6之前，\_\_getnewargs\_\_()会被调用来代替\_\_getnewargs\_ex\_\_()在协议2和协议3中。
-3. object.**__getstate__**()  
+3. object.**\_\_getstate\_\_()**
 类可以进一步影响实例如何被序列化。如果类定义了方法\_\_getstate\_\_(),它会被调用并返回对象作为序列化的内容，作为实例字典的代理。如果\_\_getstate\_\_()方法缺少，实例的\_\_dict\_\_会像往常一样被实例化。
-4. object.**__setstate__**(state)  
+4. object.**\_\_setstate\_\_(state)**  
 在反序列时，如果类定义了\_\_state\_\_()，它会在反序列化的时候调用。在那种情况下，不需要state对象是一个字典。否则，序列化状态必须是一个字典，它的条目会被赋值给新的实例字典。
 > 注意：如果\_\_getstate\_\_()返回一个false，\_\_setstate\_\_方法不会在反序列的时候调用。   
 
 正如我们所看到的，序列化不会直接调用上述所说的方法。实际上，这些方法复制协议的一部分，它实现了\_\_reduce\_\_()特殊方法。复制协议提供了统一的接口来检索数据给序列化和复制对象。  
 尽管很强大，实现\_\_reduce\_\_()在你的类里是易于出错的。为了这个原因，类设计者应该尽可能使用更高层的接口（\_\_getstate\_\_()等）。尽管，我们也会展示一些情况下，\_\_reduce\_\_()是唯一的选择或者会有更高效的序列化或者两者都会。
-5. object.**__reduce__**()  
+5. object.**\_\_reduce\_\_()**  
 这个接口当前是下面这样定义的。\_\_reduce\_\_()方法不接受任何参数，必须返回字符串或者更好是元组（返回的值通常被称为reduce值）。
 如果一个字符串返回，字符串应该被解释为全局变量的名称。它应该是对象的本地变量相对于它的模块。pickle模块搜索模块的命名空间决定对象的模块。这种行为通常对单例有效。  
 
@@ -119,7 +118,7 @@ persistent ID方案不是被pickle模块定义。它会委托这个处理给用�
 为了序列化有外部persistent Id的对象，pickler必须有一个定制的persistent_id()方法，它以一个对象作为参数，返回None或者那个对象的persistent Id。当None返回的时候，pickler仅仅序列化对象像平常一样。当一个persistent id字符串返回，pickler会序列化那个对象，以及有一个书签，这样unpickler会重新识别它为persistent id。  
 为了反序列化外部对象，unpickler必须有一个定制的persisrent_load()方法，以一个persistent Id作为参数，返回一个引用对象。  
 这有一个全面的例子展示persisrent id如何通过引用被用来序列化外部对象。
-```
+```python
 
 # Simple example presenting how persistent ID can be used to pickle
 # external objects by reference.
@@ -210,3 +209,143 @@ if __name__ == '__main__':
     main()
 
 ```
+
+# 调度表 #
+如果想要定制某些类的的pickle,而不影响其他依赖于pickle的代码，那么可以创建一个带有私人调度表的pickler。  
+受copyreg模块管理的全局调度表可以作为copyreg.dispatch_table.因而，你可以选择修改后的copy.dispatch_table副本作为私人调度表。  
+For example
+```python
+	f = io.BytesIO()
+	p = pickle.Pickler(f)
+	p.dispatch_table = copyreg.dispatch_table.copy()
+	p.dispatch_table[SomeClass] = reduce_SomeClass
+```
+
+创建一个pickler的实例，拥有私人调度表，它可专门操作SomeClass。作为一种选择的代码：
+```python
+	class MyPickler(pickle.Pickler):
+	    dispatch_table = copyreg.dispatch_table.copy()
+	    dispatch_table[SomeClass] = reduce_SomeClass
+	f = io.BytesIO()
+	p = MyPickler(f)
+```
+上面代码做了相同的事情，不过所有的MyPickler实例都会默认分享相同的调度表。使用copyreg模块相同的代码：  
+```python
+	copyreg.pickle(SomeClass, reduce_SomeClass)
+	f = io.BytesIO()
+	p = pickle.Pickler(f)
+```
+
+# 处理状态对象 #
+这里有一个例子展示如何修改序列化行为。TextReader类打开了一个文本文件，返回了行数和每次调用readline()返回每行内容。如果TextReader实例被序列化，所有的属性除了文件对象成员对会被保存。当实例被反序列化，文件重新被打开，继续读取上一次到达的位置。\_\_getstate\_\_()和\_\_setstate\_\_()方法被用来实现这样的行为。
+```python
+class TextReader:
+    """Print and number lines in a text file."""
+
+    def __init__(self, filename):
+        self.filename = filename
+        self.file = open(filename)
+        self.lineno = 0
+
+    def readline(self):
+        self.lineno += 1
+        line = self.file.readline()
+        if not line:
+            return None
+        if line.endswith('\n'):
+            line = line[:-1]
+        return "%i: %s" % (self.lineno, line)
+
+    def __getstate__(self):
+        # Copy the object's state from self.__dict__ which contains
+        # all our instance attributes. Always use the dict.copy()
+        # method to avoid modifying the original state.
+        state = self.__dict__.copy()
+        # Remove the unpicklable entries.
+        del state['file']
+        return state
+
+    def __setstate__(self, state):
+        # Restore instance attributes (i.e., filename and lineno).
+        self.__dict__.update(state)
+        # Restore the previously opened file's state. To do so, we need to
+        # reopen it and read from it until the line count is restored.
+        file = open(self.filename)
+        for _ in range(self.lineno):
+            file.readline()
+        # Finally, save the file.
+        self.file = file
+
+```
+
+样例的使用可能是这样的
+```python
+>>> reader = TextReader("hello.txt")
+>>> reader.readline()
+'1: Hello world!'
+>>> reader.readline()
+'2: I am line number two.'
+>>> new_reader = pickle.loads(pickle.dumps(reader))
+>>> new_reader.readline()
+'3: Goodbye!'
+```
+
+# 限制全局 #
+默认下，反序列化会导入任何发现在pickle数据中的类和函数。对于许多应用，这样的行为是不能接受的，因为它允许unpickler导入和调用人愿意的代码。只要考虑下这个手工制作的pickle数据流在导入的时候做了什么。
+```python
+>>> import pickle
+>>> pickle.loads(b"cos\nsystem\n(S'echo hello world'\ntR.")
+hello world
+0
+```
+在这个例子里，unpickler导入了os.system()方法，然后应用了string参数“echo hello world”。虽然，这个例子没有什么恶意，但是很难去想象这可能破坏你的系统。  
+因为这个原因，你可能想要控制什么能反序列化通过定制的Unpickler.find_class().不像它的名字一样，Unpickler.find_class()可以被调用不管什么时候全局要求。因而，可以完全禁止全球化，也可以将它们限制为一个安全的子集。  
+这里有一个例子，一个unpickler循序只有少量安全的来自builtins模块的类能被加载：
+```python
+import builtins
+import io
+import pickle
+
+safe_builtins = {
+    'range',
+    'complex',
+    'set',
+    'frozenset',
+    'slice',
+}
+
+class RestrictedUnpickler(pickle.Unpickler):
+
+    def find_class(self, module, name):
+        # Only allow safe classes from builtins.
+        if module == "builtins" and name in safe_builtins:
+            return getattr(builtins, name)
+        # Forbid everything else.
+        raise pickle.UnpicklingError("global '%s.%s' is forbidden" %
+                                     (module, name))
+
+def restricted_loads(s):
+    """Helper function analogous to pickle.loads()."""
+    return RestrictedUnpickler(io.BytesIO(s)).load()
+```
+
+一个使用我们的unpickler工作的样例的目的是：
+```python
+	>>> restricted_loads(pickle.dumps([1, 2, range(15)]))
+	[1, 2, range(0, 15)]
+	>>> restricted_loads(b"cos\nsystem\n(S'echo hello world'\ntR.")
+	Traceback (most recent call last):
+	  ...
+	pickle.UnpicklingError: global 'os.system' is forbidden
+	>>> restricted_loads(b'cbuiltins\neval\n'
+	...                  b'(S\'getattr(__import__("os"), "system")'
+	...                  b'("echo hello world")\'\ntR.')
+	Traceback (most recent call last):
+	  ...
+	pickle.UnpicklingError: global 'builtins.eval' is forbidden
+
+```
+像我们的例子展示的，你需要注意什么允许被反序列化。因而，如果安全性是一个问题，你可能需要考虑替代方案，比如xmlrpc.client 中的marshalling api或者第三方的解决方法。
+
+# 资料 #
+[pickle — Python object serialization](https://docs.python.org/3.5/library/pickle.html)

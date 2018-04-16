@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "NumPy User Guide"
+date:   2018-04-15 14:40:00 +0800
+categories: translator
+tags: Python NumPy
+published: false
+---
+
+# 说明 #
+这是一篇翻译自[NumPy User Guide]()的文章。
+
+# 
