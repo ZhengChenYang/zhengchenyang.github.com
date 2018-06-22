@@ -34,7 +34,7 @@ tags: 机器学习 图像识别
 4. h5py
 5. pyttsx3
 6. 对以上五个主题有很好的把握。如果有问题可以参考网上。我自己也是新手
-7. 一个好的CPU（最后是GPU咯）
+7. 一个好的CPU（最好是GPU咯）
 8. 耐心...需要非常多
 
 ## 安装需求 ##
@@ -140,5 +140,5 @@ pickle模块实现了基本的数据序列化和反序列化。通过pickle模�
 
 # 来源 #
 [Sign-language: a simple project](https://github.com/EvilPort2/Sign-Language)  
-[有意思的8个机器学习项目](https://yq.aliyun.com/articles/221708)
+[有意思的8个机器学习项目](https://yq.aliyun.com/articles/221708)  
 [每周一个python库](https://pymotw.com/3/index.html)

@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "Welcome to Jekyll!"
+date:   2018-06-01 16:20:09 +0800
+categories: 小笔头
+tag: NLP
+published: true
+---+
+
+

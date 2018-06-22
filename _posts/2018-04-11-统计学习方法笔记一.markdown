@@ -88,7 +88,8 @@ $$方法 = 模型 + 策略 + 算法$$
 ## 泛化能力 ##
 学习方法的泛化能力（generalizaiton ability）是指由该方法学习到的模型对未知数据的预测能力。
 
-
+## 生成模型和判别模型 ##
+监督学习的任务就是学习一个模型，应用这个模型。监督学习方法又可以分为生成方法（generative approach）和判别方法（discriminative approach）
   
 
 
